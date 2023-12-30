@@ -10,13 +10,14 @@ public class Main {
 
         int[] a = {1, 2, 3, 4, 5, 8, 7, 9, 4, 16, 5};
 
-//        System.out.println("Nhap n:");
-//        int n = scanner.nextInt();
+        System.out.println("Nhap n:");
+        int n = scanner.nextInt();
 
         //linearSearch(a, n);
 
         sortAscArr(a);
-
+        //display(a);
+        binarySearch(a, n);
 
         scanner.close();
     }
@@ -30,7 +31,26 @@ public class Main {
     }
 
     private static void binarySearch(int[] a, int n) {
+        int left = 0;
+        int right = a.length - 1;
+        boolean check = false;
 
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (a[mid] == n) {
+                System.out.println("Vi tri can tim o : " + mid);
+                check = true;
+                break;
+            } else if (a[mid] < n) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        if (!check) {
+            System.out.println("Khong co");
+        }
     }
 
     //{1, 2, 3, 4, 5, 8, 7, 9, 4, 16, 5}
@@ -46,7 +66,7 @@ public class Main {
             }
         }
 
-        display(arr);
+
     }
 
     private static void display(int[] array) {
